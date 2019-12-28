@@ -16,6 +16,9 @@ class User extends Authenticatable
     const ADMIN_USER = 'true';
     const REGULAR_USER = 'false';
 
+    // add this to let laravel use users table in place of buyers and sellers
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -58,11 +61,11 @@ class User extends Authenticatable
         return $this->admin === User::ADMIN_USER;
     }
 
-    public static function generateVerificationCode(){
-        $characters = '0123456789';
+    public static function generateVerificationCode($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
-        $randomString = 'ABCDEFGHIJKL';
-        for ($i = 0; $i < 30; $i++) {
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
