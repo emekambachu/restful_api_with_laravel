@@ -13,7 +13,7 @@ class BuyerController extends Controller
      */
     public function index()
     {
-        //
+        $buyers = Buyer::has('transactions')->get();
     }
 
     /**
