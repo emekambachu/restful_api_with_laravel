@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends ApiController
@@ -13,7 +14,10 @@ class CategoryController extends ApiController
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+//        return response()->json([ 'data' => $category ], 200);
+
+        return $this->showAll($categories);
     }
 
     /**
@@ -43,7 +47,7 @@ class CategoryController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
         //
     }
@@ -54,7 +58,7 @@ class CategoryController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
         //
     }
@@ -66,7 +70,7 @@ class CategoryController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -77,7 +81,7 @@ class CategoryController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
         //
     }
